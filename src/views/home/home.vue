@@ -1,15 +1,17 @@
 <template>
   <div>
-    这是首页！！
+    首页
   </div>
 </template>
 
 <script>
-export default {
-
-}
+  export default {
+    name: "home",
+    data () {
+      return {
+      }
+    },
+  }
 </script>
-
-<style>
-
+<style scoped>
 </style>
