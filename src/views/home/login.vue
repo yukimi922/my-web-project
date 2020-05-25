@@ -1,7 +1,7 @@
 <template>
 <div class="contair">
   <div>
-    <img src="../../assets/bg3.jpeg" alt="">
+    <img src="../../assets/bg4.jpg" alt="">
   </div>
   <el-form
     :model="ruleForm"
@@ -57,7 +57,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("submit!");
+          alert("登陆成功!");
         } else {
           console.log("error submit!!");
           return false;
@@ -73,12 +73,13 @@ export default {
 
 <style>
 .contair {
-  position: relative;
+  position: absolute;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 .contair div img {
   width: 100%;
-  height: 100%;
 }
 .demo-ruleForm {
   position: absolute;
@@ -89,5 +90,8 @@ export default {
   top: 50%;
   margin-left: -200px;
   margin-top: -100px;
+}
+.el-form-item__label {
+  color: white;
 }
 </style>
