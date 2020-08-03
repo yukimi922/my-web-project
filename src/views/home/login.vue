@@ -57,9 +57,23 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("登陆成功!");
+          this.$axios.post('/user/login',
+          this.ruleForm,
+          {
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }).then((res) => {
+            if(res.data !== null) {
+              this.$router.push('/home');
+            }else {
+              alert("用户名或密码错误！")
+            }
+          }).catch((error) =>{
+            console.log(error);
+            alert("登录失败，请重试！")
+          });
         } else {
-          console.log("error submit!!");
           return false;
         }
       });

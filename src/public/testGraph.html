@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="getData()">获取指定数据</button>
+</body>
+</html>
+<script>
+  function getData(){
+    // 定义查询结构
+    // 查询时不传递查询参数  报错"Must provide query string." 
+    // 依据graphql.hmtl案例，为json对象时可查询，
+
+    //TODO
+    // 如果要查询的结构为
+    // const obj = {
+    //   1:["张三","李四"],
+    //   2:["小红","小绿"],
+    //   3:["王梅","李雷"],
+    // }
+    // 如何查询？？？？？ 
+    /*
+        是否需要传递查询参数根据数据结构而定，此时不需要参数
+    */
+  
+    const query = `
+    query GetClassMetes($classNo: Int!){
+        getClassMetes(classNo: $classNo)
+      }
+    `
+    const variables = { classNo: 2};
+    // const query = `
+    //   query Account($userName: String, $city: String){
+    //     account(userName: $userName) {
+    //       name
+    //       age
+    //       salary(city: $city)
+    //     }
+    //   }
+    // `;
+    // const variables = { userName: "李四",city: "北京"};
+
+    fetch('http://localhost:3001/graphql',{
+      method: "POST",
+      headers:{
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        query: query,
+        variables: variables
+      })
+    }).then(res => res.json)
+    .then(json => {
+      console.log(data);
+    })
+  }
+</script>
